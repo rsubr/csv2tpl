@@ -1,5 +1,4 @@
-// TODO: header documentation
-// How to use this application
+// Filename: csv2tpl.go
 
 package main
 
@@ -51,6 +50,10 @@ func main() {
 	header, err = csvReader.Read()
 	if err != nil {
 		log.Fatal("ERROR: reading CSV header: ", err)
+	}
+
+	if len(header) == 0 {
+		log.Fatal("ERROR: no columns found in CSV header, ensure UTF8 BOM is *not* present")
 	}
 
 	for i := range header {
